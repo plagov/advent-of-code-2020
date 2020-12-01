@@ -19,5 +19,25 @@ class Day01 {
 			}
 		}
 	}
+
+	@Test
+	fun findThreeNumbersThatSumTo2020() {
+		outerLoop@for (i in allNumbers) {
+			val firstFilteredList = allNumbers.minus(i)
+			for (k in firstFilteredList) {
+				val secondFilteredList = firstFilteredList.minus(k)
+				for (x in secondFilteredList) {
+					val first = i.toInt()
+					val second = k.toInt()
+					val third = x.toInt()
+					if (first + second + third == 2020) {
+						println("Numbers are $first, $second and $third")
+						println("Multiply is: ${first * second * third}")
+						break@outerLoop
+					}
+				}
+			}
+		}
+	}
 }
 
