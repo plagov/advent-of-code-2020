@@ -14,6 +14,6 @@ class Day02Test : ShouldSpec({
   }
 
   should("return correct number for valid passwords for real input") {
-    day2.numberOfValidPasswordsFor(realInput) shouldBe 100500
+    day2.numberOfValidPasswordsFor(realInput) shouldBe 556
   }
 })
