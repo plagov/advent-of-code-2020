@@ -3,9 +3,14 @@ class Day02 {
   fun numberOfValidPasswordsFor(input: List<String>): Int {
     var counter = 0
     input.forEach { entry ->
-      if (entry.password().contains(entry.mandatoryChar())) {
-        val size = entry.password().filter { it == entry.mandatoryChar() }.size
-        if (size in entry.minRepetition()..entry.maxRepetition()) {
+      val password = password(entry)
+      val mandatoryChar = mandatoryChar(entry)
+      val minRepetition = minRepetition(entry)
+      val maxRepetition = maxRepetition(entry)
+
+      if (password.contains(mandatoryChar)) {
+        val size = password.filter { it == mandatoryChar }.size
+        if (size in minRepetition..maxRepetition) {
           counter++
         }
       }
@@ -13,16 +18,16 @@ class Day02 {
     return counter
   }
 
-  private fun String.password() = this.substringAfter(":").trim().toCharArray()
+  private fun password(entry: String) = entry.substringAfter(":").trim().toCharArray()
 
   private fun policy(entry: String) = entry.substringBefore(":").trim()
 
-  private fun String.mandatoryChar() = policy(this).last()
+  private fun mandatoryChar(entry: String) = policy(entry).last()
 
-  private fun String.minRepetition(): Int {
-    val char = policy(this).first()
+  private fun minRepetition(entry: String): Int {
+    val char = policy(entry).first()
     return Character.getNumericValue(char)
   }
 
-  private fun String.maxRepetition() = policy(this).substringAfter("-").substringBefore(" ").toInt()
+  private fun maxRepetition(entry: String) = policy(entry).substringAfter("-").substringBefore(" ").toInt()
 }
