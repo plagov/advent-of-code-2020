@@ -24,10 +24,7 @@ class Day02 {
 
   private fun mandatoryChar(entry: String) = policy(entry).last()
 
-  private fun minRepetition(entry: String): Int {
-    val char = policy(entry).first()
-    return Character.getNumericValue(char)
-  }
+  private fun minRepetition(entry: String) = policy(entry).substringBefore("-").toInt()
 
   private fun maxRepetition(entry: String) = policy(entry).substringAfter("-").substringBefore(" ").toInt()
 }
