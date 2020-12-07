@@ -4,29 +4,26 @@ import kotlin.math.ceil
 
 class Day03 {
 
-  companion object {
-    private const val STEPS_TO_RIGHT_AT_ONCE = 3
-  }
-
-  fun numberOfTreesForPlan(sampleInput: List<String>): Int {
-    val newInput = extendPattern(sampleInput)
-    var step = 1
-    var counter = 0
-    newInput.drop(1).forEach { row ->
-      if (row[STEPS_TO_RIGHT_AT_ONCE * step] == '#') {
-        counter++
+  fun numberOfTreesForPlan(input: List<String>, stepsToRight: Int, stepsDown: Int): Long {
+    val newInput = extendPattern(input, stepsToRight).drop(stepsDown)
+    var move = 1
+    var treesCounter = 0L
+    for (i in newInput.indices step stepsDown) {
+      val row = newInput[i]
+      if (row[stepsToRight * move] == '#') {
+        treesCounter++
       }
-      step++
+      move++
     }
-    return counter
+    return treesCounter
   }
 
-  private fun extendPattern(initialPattern: List<String>): List<String> {
-    val totalNumberOfRows = initialPattern.size
-    val initialWidthOfRow = initialPattern.first().length
-    val numberToRepeatPatternToRight = (totalNumberOfRows * STEPS_TO_RIGHT_AT_ONCE) / initialWidthOfRow.toDouble()
+  private fun extendPattern(input: List<String>, stepsToRight: Int): List<String> {
+    val totalNumberOfRows = input.size
+    val initialWidthOfRow = input.first().length
+    val numberToRepeatPatternToRight = (totalNumberOfRows * stepsToRight) / initialWidthOfRow.toDouble()
 
-    return initialPattern.map { it.repeat(ceil(numberToRepeatPatternToRight).toInt()) }
+    return input.map { it.repeat(ceil(numberToRepeatPatternToRight).toInt()) }
   }
 
 }
