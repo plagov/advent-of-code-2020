@@ -1,10 +1,13 @@
+package io.plagov.advent
+
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
+import io.plagov.readInputFile
 
 class Day02Test : ShouldSpec({
 
   val sampleInput = listOf("1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc")
-  val realInput = this::class.java.getResourceAsStream("inputs/day02.txt").bufferedReader().readLines()
+  val realInput = readInputFile("day02.txt")
 
   val day2 = Day02()
 

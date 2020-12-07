@@ -1,3 +1,5 @@
+package io.plagov.advent
+
 import kotlin.math.ceil
 
 class Day03 {
