@@ -1,3 +1,5 @@
+package io.plagov.advent
+
 class Day01 {
 
   fun findMultiplyOfTwoNumbers(input: List<Int>): Int {

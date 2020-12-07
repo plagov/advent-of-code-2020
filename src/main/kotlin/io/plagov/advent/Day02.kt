@@ -1,3 +1,5 @@
+package io.plagov.advent
+
 class Day02 {
 
   fun numberOfValidPasswordsByRepetitionFor(input: List<String>): Int {
