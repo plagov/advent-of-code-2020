@@ -15,7 +15,7 @@ class Day04Test : ShouldSpec ({
   }
 
   should("return correct number of valid passports for real input") {
-    day4.numberOfValidPasswords(realInput) shouldBe 2
+    day4.numberOfValidPasswords(realInput) shouldBe 206
   }
 
 })
