@@ -37,7 +37,7 @@ class Day04 {
           value.substringBefore("in").toInt() in 59..76
         }
       }
-      "hcl" -> value.startsWith("#") && value.matches(Regex("#[0-9a-f]{6}"))
+      "hcl" -> value.matches(Regex("#[0-9a-f]{6}"))
       "ecl" -> listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth").any { value == it }
       "pid" -> value.matches(Regex("^\\d{9}$"))
       else -> throw IllegalStateException("Unknown key $field")
