@@ -12,13 +12,10 @@ class Day05 {
   }
 
   fun findRowNumberForPass(pass: String): Int {
-    return pass.take(ROW_PART_BITS).toCharArray().fold(RANGE_OF_ROWS, { accumulator, next ->
+    return pass.take(ROW_PART_BITS).toCharArray().fold(RANGE_OF_ROWS, { accumulator, bit ->
       val middlePosition = accumulator.size / 2
-      if (next == 'F') {
-        accumulator.slice(0 until middlePosition)
-      } else {
-        accumulator.slice(middlePosition until accumulator.size)
-      }
+      accumulator.slice(0 until middlePosition).takeIf { bit == 'F' }
+          ?: accumulator.slice(middlePosition until accumulator.size)
     }).single()
   }
 
