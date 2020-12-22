@@ -6,10 +6,12 @@ import io.kotest.data.headers
 import io.kotest.data.row
 import io.kotest.data.table
 import io.kotest.matchers.shouldBe
+import io.plagov.readInputFile
 
 class Day05Test : ShouldSpec({
 
   val samplePasses = listOf("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
+  val realInput = readInputFile("day05.txt")
 
   val day5 = Day05()
 
@@ -37,6 +39,10 @@ class Day05Test : ShouldSpec({
         row("BBFFBBFRLL", 4)
       )
     ) { boardingPass, columnNumber -> day5.findColumnNumberForPass(boardingPass) shouldBe columnNumber }
+  }
+
+  should("return highest seat ID for real boarding passes") {
+    day5.highestSeatIdForPasses(realInput) shouldBe 838
   }
 
 })
