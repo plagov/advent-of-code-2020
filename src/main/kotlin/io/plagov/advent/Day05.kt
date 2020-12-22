@@ -9,9 +9,12 @@ class Day05 {
     private const val COLUMN_PART_BITS = 3
   }
 
-  fun highestSeatIdForPasses(passes: List<String>): Int {
-    return 1
-  }
+  fun highestSeatIdForPasses(passes: List<String>) =
+    passes.map { pass ->
+      val rowId = findRowNumberForPass(pass)
+      val columnId = findColumnNumberForPass(pass)
+      rowId * 8 + columnId
+    }.distinct().maxOrNull() ?: throw IllegalStateException("The specified list is empty")
 
   fun findRowNumberForPass(pass: String) =
     pass.take(ROW_PART_BITS).toCharArray().fold(RANGE_OF_ROWS, { accumulator, bit ->
