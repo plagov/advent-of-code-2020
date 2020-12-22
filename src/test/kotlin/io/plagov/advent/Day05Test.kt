@@ -28,4 +28,15 @@ class Day05Test : ShouldSpec({
     ) { boardingPass, rowNumber -> day5.findRowNumberForPass(boardingPass) shouldBe rowNumber }
   }
 
+  should("return correct column number for sample boarding pass") {
+    forAll(
+      table(
+        headers("boarding pass", "column number"),
+        row("BFFFBBFRRR", 7),
+        row("FFFBBBFRRR", 7),
+        row("BBFFBBFRLL", 4)
+      )
+    ) { boardingPass, columnNumber -> day5.findColumnNumberForPass(boardingPass) shouldBe columnNumber }
+  }
+
 })
