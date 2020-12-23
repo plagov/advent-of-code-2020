@@ -16,7 +16,7 @@ class Day05Test : ShouldSpec({
   val day5 = Day05()
 
   should("return highest seat ID for sample boarding passes") {
-    day5.highestSeatIdForPasses(samplePasses) shouldBe 820
+    day5.seatIdsForPasses(samplePasses).maxOrNull() shouldBe 820
   }
 
   should("return correct row number for sample boarding pass") {
@@ -42,7 +42,11 @@ class Day05Test : ShouldSpec({
   }
 
   should("return highest seat ID for real boarding passes") {
-    day5.highestSeatIdForPasses(realInput) shouldBe 838
+    day5.seatIdsForPasses(realInput).maxOrNull() shouldBe 838
+  }
+
+  should("return missing seat ID for real boarding passes") {
+    day5.findMissingSeatIdFromPasses(realInput) shouldBe 714
   }
 
 })
