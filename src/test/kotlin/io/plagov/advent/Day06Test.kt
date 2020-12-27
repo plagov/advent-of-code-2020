@@ -23,4 +23,8 @@ class Day06Test : ShouldSpec({
     day6.sumOfYesAnswersFromAll(sampleInput) shouldBe 6
   }
 
+  should("return correct sum of question with answer 'yes' for real input from all") {
+    day6.sumOfYesAnswersFromAll(realInput) shouldBe 3445
+  }
+
 })
