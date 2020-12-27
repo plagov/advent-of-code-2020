@@ -11,13 +11,16 @@ class Day06Test : ShouldSpec({
 
   val day6 = Day06()
 
-  should("return correct sum of questions with answer 'yes' for sample input") {
-    day6.sumForYesQuestions(sampleInput) shouldBe 11
+  should("return correct sum of questions with answer 'yes' for sample input from anyone") {
+    day6.sumOfYesQuestionsFromAnyone(sampleInput) shouldBe 11
   }
 
-  should("return correct sum of questions with answer 'yes' for real input") {
-    day6.sumForYesQuestions(realInput) shouldBe 6748
+  should("return correct sum of questions with answer 'yes' for real input from anyone") {
+    day6.sumOfYesQuestionsFromAnyone(realInput) shouldBe 6748
   }
 
+  should("return correct sum of question with answer 'yes' for sample input from all") {
+    day6.sumOfYesAnswersFromAll(sampleInput) shouldBe 6
+  }
 
 })
