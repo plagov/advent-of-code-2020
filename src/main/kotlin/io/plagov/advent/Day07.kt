@@ -10,8 +10,7 @@ class Day07 {
   private fun parseRules(input: List<String>): List<BagRule> {
     return input.map { rule ->
       val bagName = rule.substringBefore(" bags")
-      val allBags = rule.substringAfter("contain ")
-      val holdingBags = parseHoldingBags(allBags)
+      val holdingBags = parseHoldingBags(rule.substringAfter("contain "))
 
       BagRule(bagName, holdingBags)
     }
