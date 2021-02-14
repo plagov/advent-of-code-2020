@@ -4,6 +4,12 @@ class Day07 {
 
   fun shinyGoldBagHolders(input: List<String>): Int {
     println(parseRules(input))
+
+    val directHolders = parseRules(input).flatMap { rule ->
+      rule.holders.filter { holder -> holder.containsKey("shiny gold") }
+    }
+
+    println(directHolders)
     return 4
   }
 
