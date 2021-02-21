@@ -3,19 +3,17 @@ package io.plagov.advent
 class Day07 {
 
   fun shinyGoldBagHolders(input: List<String>): Int {
-    println(parseRules(input))
-
     val directHolders = parseRules(input).filter { rule ->
-      rule.holders.any { holder ->
-        holder.containsKey("shiny gold")
+      rule.holders.any { holder -> holder.containsKey("shiny gold") }
+    }
+
+    val inDirectHolders = parseRules(input).minus(directHolders).filter { rule ->
+      rule.holders.flatMap { it.keys }.any { insideBag ->
+        insideBag in directHolders.map { directHolder -> directHolder.bagName }
       }
     }
 
-    val emptyHolders = parseRules(input).filter { rule -> rule.holders.isEmpty() }
-
-    println("Direct holders = $directHolders")
-    println("Empty holders = $emptyHolders")
-    return 4
+    return directHolders.size + inDirectHolders.size
   }
 
   private fun parseRules(input: List<String>): List<BagRule> {
