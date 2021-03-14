@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-  testImplementation("io.kotest:kotest-runner-junit5:4.4.1")
+  testImplementation("io.kotest:kotest-runner-junit5:4.4.3")
 }
 
 tasks.test {
